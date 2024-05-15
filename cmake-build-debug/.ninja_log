@@ -1,0 +1,12 @@
+# ninja log v5
+832	1014	7374981762453994	Unik.exe	ebefd489dad8771
+6	831	7374981760682594	CMakeFiles/Unik.dir/main.cpp.obj	1b75661a4463917a
+4	233	7375032702693433	build.ninja	9b9fde74a0f81e96
+27	179	7375032705389777	CMakeFiles/Unik.dir/class/Engine.cpp.obj	b5623cadea252a91
+2	181	7375032705401678	CMakeFiles/Unik.dir/class/Object.cpp.obj	c0485b1ce432fe25
+10	182	7375032705411682	CMakeFiles/Unik.dir/class/Rocket.cpp.obj	a46bb41ae49848b1
+19	182	7375032705416725	CMakeFiles/Unik.dir/class/Hero.cpp.obj	5ba3f0a7e6e3b1d7
+6	183	7375032705401678	CMakeFiles/Unik.dir/class/GameTxt.cpp.obj	a622f64dd7f6a1a
+23	184	7375032705401678	CMakeFiles/Unik.dir/class/Game.cpp.obj	386a0192fe0861b9
+14	414	7375032707761928	CMakeFiles/Unik.dir/main.cpp.obj	1b75661a4463917a
+420	510	7375032708697618	Unik.exe	6376c269ae22cdb3

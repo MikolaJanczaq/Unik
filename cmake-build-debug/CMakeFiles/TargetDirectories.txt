@@ -1,0 +1,3 @@
+C:/Users/mikus/OneDrive/Pulpit/Unik/cmake-build-debug/CMakeFiles/Unik.dir
+C:/Users/mikus/OneDrive/Pulpit/Unik/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/mikus/OneDrive/Pulpit/Unik/cmake-build-debug/CMakeFiles/rebuild_cache.dir
