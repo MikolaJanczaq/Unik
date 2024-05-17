@@ -4,11 +4,17 @@
 #include "Object.h"
 
 class Rocket : public Object{
+private:
+    Rocket(const Rocket & e);
+    Rocket & operator = (const Rocket &E);
+
 public:
     Rocket();
     ~Rocket();
 
+    void startingPosition() override;
     void move() override;
+
 
 };
 

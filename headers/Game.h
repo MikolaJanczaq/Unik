@@ -4,11 +4,16 @@
 #include "Engine.h"
 
 class Game : public Engine {
+private:
+    Game(const Game & e);
+    Game & operator = (const Game &E);
 public:
     Game();
     ~Game();
-    virtual void Show();
 
+    void Run(); // while(true): Analysis
+
+    virtual void Show();
 };
 
 
