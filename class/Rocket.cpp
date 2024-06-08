@@ -1,11 +1,14 @@
 #include "../headers/Rocket.h"
 #include <cstdlib>
 
-Rocket::Rocket() : Object() {}
+Rocket::Rocket() : Object(), direction(0) {
+    // Determine the direction in which the rocket will move (straight line)
+    direction = rand() % 4; // 0: up, 1: down, 2: left, 3: right
+}
 
 Rocket::~Rocket() {}
 
-Rocket::Rocket(Rocket &&other) noexcept : Object() {
+Rocket::Rocket(Rocket &&other) noexcept : Object(), direction(other.direction) {
     location_x = other.location_x;
     location_y = other.location_y;
 }
@@ -14,6 +17,7 @@ Rocket& Rocket::operator=(Rocket &&other) noexcept {
     if (this != &other) {
         location_x = other.location_x;
         location_y = other.location_y;
+        direction = other.direction;
     }
     return *this;
 }
@@ -42,10 +46,10 @@ void Rocket::startingPosition() {
 }
 
 void Rocket::move() {
-    // Rakieta porusza się w kierunku środka planszy
-    if (location_x < 5) location_x++;
-    else if (location_x > 5) location_x--;
-
-    if (location_y < 5) location_y++;
-    else if (location_y > 5) location_y--;
+    switch (direction) {
+        case 0: if (location_y > 0) location_y--; break; // Move up
+        case 1: if (location_y < 9) location_y++; break; // Move down
+        case 2: if (location_x > 0) location_x--; break; // Move left
+        case 3: if (location_x < 9) location_x++; break; // Move right
+    }
 }

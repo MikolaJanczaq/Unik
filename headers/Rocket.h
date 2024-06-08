@@ -4,6 +4,9 @@
 #include "Object.h"
 
 class Rocket : public Object {
+private:
+    int direction; // 0: up, 1: down, 2: left, 3: right
+
 public:
     Rocket();
     ~Rocket();

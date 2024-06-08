@@ -6,18 +6,23 @@ Game::Game() {}
 Game::~Game() {}
 
 void Game::Run() {
-    while (true) {
-        Analysis();
-        Show();
-
-        char input;
-        std::cin >> input;
-        hero.move(input);
-
-        system("clear"); // Clear console, may use "cls" on Windows
-    }
+    Engine::Run();
 }
 
 void Game::Show() {
-    // Wyświetlanie stanu gry, do zaimplementowania w klasach pochodnych
+    // Displaying the game state
+    std::lock_guard<std::mutex> lock(mtx);  // Lock the mutex
+
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            if (tab[i][j] == 1) {
+                std::cout << 'H';  // Hero
+            } else if (tab[i][j] == 2) {
+                std::cout << 'R';  // Rocket
+            } else {
+                std::cout << '.';  // Empty space
+            }
+        }
+        std::cout << std::endl;
+    }
 }

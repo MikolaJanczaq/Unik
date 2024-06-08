@@ -5,6 +5,10 @@
 #include "Hero.h"
 #include "Rocket.h"
 #include <vector>
+#include <thread>
+#include <chrono>
+#include <mutex>
+#include <iostream>
 
 class Engine {
 protected:
@@ -13,6 +17,7 @@ protected:
     int **temp;
     Hero hero;
     std::vector<Rocket> rockets;
+    std::mutex mtx;  // Mutex for protecting shared resources
 
     void createMap();
     void createHero();
@@ -27,6 +32,10 @@ public:
 
     void Analysis();
     virtual void Show() = 0;
+    void Run();
+
+private:
+    void updateRockets();
 };
 
-#endif //UNIK_ENGINE_H
+#endif // UNIK_ENGINE_H

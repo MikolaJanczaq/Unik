@@ -54,17 +54,8 @@ void GameSFML::handleInput() {
 
 // Aktualizacja stanu gry
 void GameSFML::update() {
-    for (auto &rocket : rockets) {
-        rocket.move();
-    }
-
-    // Sprawdzenie kolizji
-    for (const auto &rocket : rockets) {
-        if (rocket.getLocationX() == hero.getLocationX() && rocket.getLocationY() == hero.getLocationY()) {
-            std::cout << "Game Over! You were hit by a rocket!" << std::endl;
-            //window.close();
-        }
-    }
+    // Perform the game logic (including collision detection)
+    Analysis();
 }
 
 // Renderowanie gry

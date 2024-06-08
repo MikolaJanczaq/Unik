@@ -1,6 +1,6 @@
 #include "../headers/Object.h"
 
-Object::Object() : location_x(0), location_y(0) {}
+Object::Object() : location_x(-1), location_y(-1) {}
 
 Object::~Object() {}
 
