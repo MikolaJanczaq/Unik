@@ -5,16 +5,15 @@
 
 class Game : public Engine {
 private:
-    Game(const Game & e);
-    Game & operator = (const Game &E);
+    Game(const Game &e);
+    Game &operator=(const Game &E);
+
 public:
     Game();
     ~Game();
 
     void Run(); // while(true): Analysis
-
-    virtual void Show();
+    void Show() override;
 };
-
 
 #endif //UNIK_GAME_H

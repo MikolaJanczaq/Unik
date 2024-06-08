@@ -1,8 +1,7 @@
-#include <iostream>
+#include "headers/GameSFML.h"
 
-#include "headers/GameTxt.h"
-
-int main()
-{
+int main() {
+    GameSFML game;
+    game.Run();
     return 0;
 }

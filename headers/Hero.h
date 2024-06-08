@@ -3,19 +3,17 @@
 
 #include "Object.h"
 
-class Hero : public Object{
+class Hero : public Object {
 private:
-    Hero(const Hero & e);
-    Hero & operator = (const Hero &E);
-    
+    Hero(const Hero &h);
+    Hero &operator=(const Hero &H);
+
 public:
     Hero();
     ~Hero();
 
     void startingPosition() override;
-    void move() override;
-
+    void move(char input); // Usunięto override
 };
-
 
 #endif //UNIK_HERO_H

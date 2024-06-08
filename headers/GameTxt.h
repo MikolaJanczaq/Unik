@@ -3,9 +3,9 @@
 
 #include "Game.h"
 
-class GameTxt : public Game{
-
+class GameTxt : public Game {
+public:
+    void Show() override;
 };
-
 
 #endif //UNIK_GAMETXT_H
