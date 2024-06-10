@@ -52,6 +52,16 @@ void Rocket::move() {
     }
 }
 
-bool Rocket::isAtEdge() const {
-    return location_x == 0 || location_x == 9 || location_y == 0 || location_y == 9;
+int Rocket::getDirection() const{
+    return direction;
+}
+
+bool Rocket::isAtEdge(int direction) const {
+    switch (direction) {
+        case 0: return location_y == 0; // Góra
+        case 1: return location_y == 9; // Dół
+        case 2: return location_x == 0; // Lewo
+        case 3: return location_x == 9; // Prawo
+        default: return false; // Nieznany kierunek
+    }
 }

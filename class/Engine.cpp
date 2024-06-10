@@ -44,14 +44,6 @@ void Engine::createRockets() {
     }
 }
 
-void Engine::replaceRocket(int index) {
-    Rocket rocket;
-    do {
-        rocket.startingPosition();
-    } while (rocket.getLocationX() == hero.getLocationX() && rocket.getLocationY() == hero.getLocationY());
-    rockets[index] = std::move(rocket);
-}
-
 void Engine::MoveRockets() {
     while (true) {
         for (Rocket &rocket : rockets) {
@@ -59,6 +51,13 @@ void Engine::MoveRockets() {
         }
         std::this_thread::sleep_for(std::chrono::milliseconds (500));
     }
+}
+
+
+void Engine::replaceRocket(int index) {
+    do {
+        rockets[index].startingPosition();
+    } while (rockets[index].getLocationX() == hero.getLocationX() && rockets[index].getLocationY() == hero.getLocationY());
 }
 
 void Engine::Analysis() {
@@ -69,8 +68,8 @@ void Engine::Analysis() {
         }
     }
 
-    for (int i = 0; i < size; ++i) {
-        for (int j = 0; j < size; ++j) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
             tab[i][j] = 0;
         }
     }
@@ -78,7 +77,7 @@ void Engine::Analysis() {
     tab[hero.getLocationY()][hero.getLocationX()] = 1;
 
     for (int i = 0; i < rockets.size(); ++i) {
-        if (rockets[i].isAtEdge()) {
+        if (rockets[i].isAtEdge(rockets[i].getDirection())) {
             replaceRocket(i);
         }
         tab[rockets[i].getLocationY()][rockets[i].getLocationX()] = 2;

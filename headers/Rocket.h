@@ -17,9 +17,11 @@ public:
     Rocket(Rocket &&other) noexcept;
     Rocket& operator=(Rocket &&other) noexcept;
 
+    int getDirection() const;
+
     void startingPosition() override;
     void move() override;
-    bool isAtEdge() const;
+    bool isAtEdge(int direction) const;
 };
 
 #endif //UNIK_ROCKET_H
