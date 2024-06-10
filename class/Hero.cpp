@@ -5,7 +5,7 @@ Hero::Hero() : Object() {}
 Hero::~Hero() {}
 
 void Hero::startingPosition() {
-    location_x = 5; // Środek planszy
+    location_x = 5;
     location_y = 5;
 }
 

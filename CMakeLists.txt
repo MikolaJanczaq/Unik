@@ -16,8 +16,6 @@ add_executable(Unik
         headers/Engine.h
         class/Game.cpp
         headers/Game.h
-        class/GameTxt.cpp
-        headers/GameTxt.h
         class/GameSFML.cpp
         headers/GameSFML.h
 )

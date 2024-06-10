@@ -2,19 +2,19 @@
 #define UNIK_OBJECT_H
 
 class Object {
-protected:
-    int location_x, location_y;
-
+private:
     Object(const Object &e);
     Object &operator=(const Object &E);
+protected:
+    int location_x, location_y;
 
 public:
     Object();
     virtual ~Object();
 
     virtual void startingPosition();
-    int getLocationX() const;  // Dodajemy const
-    int getLocationY() const;  // Dodajemy const
+    int getLocationX() const;
+    int getLocationY() const;
 
     virtual void move();
 };

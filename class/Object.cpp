@@ -9,14 +9,14 @@ void Object::startingPosition() {
     location_y = 0;
 }
 
-int Object::getLocationX() const {  // Dodajemy const
+int Object::getLocationX() const {
     return location_x;
 }
 
-int Object::getLocationY() const {  // Dodajemy const
+int Object::getLocationY() const {
     return location_y;
 }
 
 void Object::move() {
-    // Domyślna implementacja, można ją nadpisać w klasach dziedziczących
+    // Default implementation
 }

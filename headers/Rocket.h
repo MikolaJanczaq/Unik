@@ -5,7 +5,7 @@
 
 class Rocket : public Object {
 private:
-    int direction; // 0: up, 1: down, 2: left, 3: right
+    int direction;
 
 public:
     Rocket();
@@ -19,7 +19,7 @@ public:
 
     void startingPosition() override;
     void move() override;
-    bool isAtEdge() const; // New method to check if the rocket is at the edge
+    bool isAtEdge() const;
 };
 
 #endif //UNIK_ROCKET_H

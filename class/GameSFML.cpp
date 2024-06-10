@@ -1,5 +1,6 @@
 #include "../headers/GameSFML.h"
 #include <iostream>
+#include <thread>
 
 GameSFML::GameSFML()
         : window(sf::VideoMode(800, 800), "Game Window") {
@@ -20,16 +21,16 @@ GameSFML::GameSFML()
 GameSFML::~GameSFML() {}
 
 void GameSFML::Run() {
-    std::thread rocketThread(&Engine::updateRockets, this);
-    rocketThread.detach(); // Run the rocket update thread in the background
+    std::thread rocketThread(&Engine::MoveRockets, this);
+    rocketThread.detach();
 
     while (window.isOpen()) {
+        Analysis();
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window.close();
             } else if (event.type == sf::Event::KeyPressed) {
-                std::lock_guard<std::mutex> lock(mtx);
                 switch (event.key.code) {
                     case sf::Keyboard::W:
                         hero.move('w');
@@ -56,8 +57,6 @@ void GameSFML::Run() {
 }
 
 void GameSFML::Show() {
-    std::lock_guard<std::mutex> lock(mtx);
-
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
             if (tab[i][j] == 1) {

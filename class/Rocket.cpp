@@ -1,9 +1,8 @@
 #include "../headers/Rocket.h"
 #include <cstdlib>
-#include <iostream>
 
 Rocket::Rocket() : Object(), direction(0) {
-    direction = rand() % 4; // 0: up, 1: down, 2: left, 3: right
+    direction = rand() % 4;
 }
 
 Rocket::~Rocket() {}

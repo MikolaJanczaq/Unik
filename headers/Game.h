@@ -12,7 +12,7 @@ public:
     Game();
     ~Game();
 
-    virtual void Run(); // Start the game loop
+    virtual void Run();
     virtual void Show();
 };
 

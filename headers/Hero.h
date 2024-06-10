@@ -13,7 +13,7 @@ public:
     ~Hero();
 
     void startingPosition() override;
-    void move(char input); // Usunięto override
+    void move(char input);
 };
 
 #endif //UNIK_HERO_H
