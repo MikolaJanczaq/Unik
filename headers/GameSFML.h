@@ -12,15 +12,11 @@ private:
     sf::Sprite heroSprite;
     sf::Sprite rocketSprite;
 
-    void loadTextures();
-    void handleInput();
-    void update();
-    void render();
-
 public:
     GameSFML();
     ~GameSFML();
-    void Run() ;
+
+    void Run() override;
     void Show() override;
 };
 

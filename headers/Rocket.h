@@ -19,6 +19,7 @@ public:
 
     void startingPosition() override;
     void move() override;
+    bool isAtEdge() const; // New method to check if the rocket is at the edge
 };
 
 #endif //UNIK_ROCKET_H

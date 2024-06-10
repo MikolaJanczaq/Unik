@@ -1,8 +1,8 @@
 #include "../headers/Rocket.h"
 #include <cstdlib>
+#include <iostream>
 
 Rocket::Rocket() : Object(), direction(0) {
-    // Determine the direction in which the rocket will move (straight line)
     direction = rand() % 4; // 0: up, 1: down, 2: left, 3: right
 }
 
@@ -23,22 +23,21 @@ Rocket& Rocket::operator=(Rocket &&other) noexcept {
 }
 
 void Rocket::startingPosition() {
-    // Rakiety startują z losowej pozycji na krawędzi planszy
     int edge = rand() % 4;
     switch (edge) {
-        case 0: // top edge
+        case 0:
             location_x = rand() % 10;
             location_y = 0;
             break;
-        case 1: // bottom edge
+        case 1:
             location_x = rand() % 10;
             location_y = 9;
             break;
-        case 2: // left edge
+        case 2:
             location_x = 0;
             location_y = rand() % 10;
             break;
-        case 3: // right edge
+        case 3:
             location_x = 9;
             location_y = rand() % 10;
             break;
@@ -47,9 +46,13 @@ void Rocket::startingPosition() {
 
 void Rocket::move() {
     switch (direction) {
-        case 0: if (location_y > 0) location_y--; break; // Move up
-        case 1: if (location_y < 9) location_y++; break; // Move down
-        case 2: if (location_x > 0) location_x--; break; // Move left
-        case 3: if (location_x < 9) location_x++; break; // Move right
+        case 0: if (location_y > 0) location_y--; break;
+        case 1: if (location_y < 9) location_y++; break;
+        case 2: if (location_x > 0) location_x--; break;
+        case 3: if (location_x < 9) location_x++; break;
     }
+}
+
+bool Rocket::isAtEdge() const {
+    return location_x == 0 || location_x == 9 || location_y == 0 || location_y == 9;
 }

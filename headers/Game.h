@@ -12,8 +12,8 @@ public:
     Game();
     ~Game();
 
-    void Run(); // while(true): Analysis
-    void Show() override;
+    virtual void Run(); // Start the game loop
+    virtual void Show();
 };
 
 #endif //UNIK_GAME_H

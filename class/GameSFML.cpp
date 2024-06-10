@@ -1,89 +1,72 @@
 #include "../headers/GameSFML.h"
 #include <iostream>
 
-// Konstruktor
-GameSFML::GameSFML() : window(sf::VideoMode(800, 800), "Unik") {
-    loadTextures();
-}
+GameSFML::GameSFML()
+        : window(sf::VideoMode(800, 800), "Game Window") {
 
-// Destruktor
-GameSFML::~GameSFML() {
-}
-
-// Ładowanie tekstur
-void GameSFML::loadTextures() {
     if (!heroTexture.loadFromFile("../graphic/hero.png")) {
-        std::cerr << "Error loading hero texture" << std::endl;
+        std::cerr << "Failed to load hero texture!" << std::endl;
     }
-    if (!rocketTexture.loadFromFile("../graphic/rocket.png")) {
-        std::cerr << "Error loading rocket texture" << std::endl;
-    }
-
     heroSprite.setTexture(heroTexture);
+    heroSprite.setScale(80.0f / heroTexture.getSize().x, 80.0f / heroTexture.getSize().y);
+
+    if (!rocketTexture.loadFromFile("../graphic/rocket.png")) {
+        std::cerr << "Failed to load rocket texture!" << std::endl;
+    }
     rocketSprite.setTexture(rocketTexture);
+    rocketSprite.setScale(80.0f / rocketTexture.getSize().x, 80.0f / rocketTexture.getSize().y);
 }
 
-// Obsługa wejścia
-void GameSFML::handleInput() {
-    sf::Event event;
-    while (window.pollEvent(event)) {
-        if (event.type == sf::Event::Closed) {
-            window.close();
+GameSFML::~GameSFML() {}
+
+void GameSFML::Run() {
+    std::thread rocketThread(&Engine::updateRockets, this);
+    rocketThread.detach(); // Run the rocket update thread in the background
+
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            } else if (event.type == sf::Event::KeyPressed) {
+                std::lock_guard<std::mutex> lock(mtx);
+                switch (event.key.code) {
+                    case sf::Keyboard::W:
+                        hero.move('w');
+                        break;
+                    case sf::Keyboard::A:
+                        hero.move('a');
+                        break;
+                    case sf::Keyboard::S:
+                        hero.move('s');
+                        break;
+                    case sf::Keyboard::D:
+                        hero.move('d');
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
-        if (event.type == sf::Event::KeyPressed) {
-            switch (event.key.code) {
-                case sf::Keyboard::W:
-                    hero.move('w');
-                    break;
-                case sf::Keyboard::A:
-                    hero.move('a');
-                    break;
-                case sf::Keyboard::S:
-                    hero.move('s');
-                    break;
-                case sf::Keyboard::D:
-                    hero.move('d');
-                    break;
-                default:
-                    break;
+        window.clear();
+        Show();
+        window.display();
+    }
+}
+
+void GameSFML::Show() {
+    std::lock_guard<std::mutex> lock(mtx);
+
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            if (tab[i][j] == 1) {
+                heroSprite.setPosition(j * 80, i * 80);
+                window.draw(heroSprite);
+            } else if (tab[i][j] == 2) {
+                rocketSprite.setPosition(j * 80, i * 80);
+                window.draw(rocketSprite);
             }
         }
     }
-}
-
-// Aktualizacja stanu gry
-void GameSFML::update() {
-    // Perform the game logic (including collision detection)
-    Analysis();
-}
-
-// Renderowanie gry
-void GameSFML::render() {
-    window.clear();
-
-    // Rysowanie bohatera
-    heroSprite.setPosition(hero.getLocationX() * 80, hero.getLocationY() * 80);
-    window.draw(heroSprite);
-
-    // Rysowanie rakiet
-    for (const auto &rocket : rockets) {
-        rocketSprite.setPosition(rocket.getLocationX() * 80, rocket.getLocationY() * 80);
-        window.draw(rocketSprite);
-    }
-
-    window.display();
-}
-
-// Główna pętla gry
-void GameSFML::Run() {
-    while (window.isOpen()) {
-        handleInput();
-        update();
-        render();
-    }
-}
-
-// Pokazywanie stanu gry (nie używane w SFML)
-void GameSFML::Show() {
 }
