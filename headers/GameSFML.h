@@ -11,13 +11,15 @@ private:
     sf::Texture rocketTexture;
     sf::Sprite heroSprite;
     sf::Sprite rocketSprite;
+    void Show() override;
+    void MoveInput();
 
 public:
     GameSFML();
     ~GameSFML();
 
     void Run() override;
-    void Show() override;
+
 };
 
 #endif //UNIK_GAMESFML_H

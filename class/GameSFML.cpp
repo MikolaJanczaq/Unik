@@ -20,41 +20,32 @@ GameSFML::GameSFML()
 
 GameSFML::~GameSFML() {}
 
-void GameSFML::Run() {
-    std::thread rocketThread(&Engine::MoveRockets, this);
-    rocketThread.detach();
-
-    while (window.isOpen()) {
-        Analysis();
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                window.close();
-            } else if (event.type == sf::Event::KeyPressed) {
-                switch (event.key.code) {
-                    case sf::Keyboard::W:
-                        hero.move('w');
-                        break;
-                    case sf::Keyboard::A:
-                        hero.move('a');
-                        break;
-                    case sf::Keyboard::S:
-                        hero.move('s');
-                        break;
-                    case sf::Keyboard::D:
-                        hero.move('d');
-                        break;
-                    default:
-                        break;
-                }
+void GameSFML::MoveInput() {
+    sf::Event event;
+    while (window.pollEvent(event)) {
+        if (event.type == sf::Event::Closed) {
+            window.close();
+        } else if (event.type == sf::Event::KeyPressed) {
+            switch (event.key.code) {
+                case sf::Keyboard::W:
+                    hero.move('w');
+                    break;
+                case sf::Keyboard::A:
+                    hero.move('a');
+                    break;
+                case sf::Keyboard::S:
+                    hero.move('s');
+                    break;
+                case sf::Keyboard::D:
+                    hero.move('d');
+                    break;
+                default:
+                    break;
             }
         }
-
-        window.clear();
-        Show();
-        window.display();
     }
 }
+
 
 void GameSFML::Show() {
     for (int i = 0; i < size; ++i) {
@@ -69,3 +60,19 @@ void GameSFML::Show() {
         }
     }
 }
+
+
+void GameSFML::Run() {
+    std::thread rocketThread(&Engine::MoveRockets, this);
+    rocketThread.detach();
+
+    while (window.isOpen()) {
+        Analysis();
+        MoveInput();
+
+        window.clear();
+        Show();
+        window.display();
+    }
+}
+
