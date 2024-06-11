@@ -69,7 +69,7 @@ void GameSFML::Run() {
     while (window.isOpen()) {
         if(!gameStatus) {
             std::cout << "Game Over! You were hit by a rocket!" << std::endl;
-            exit(0);
+            break;
         }
 
         Analysis();
