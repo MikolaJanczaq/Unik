@@ -6,13 +6,15 @@ GameSFML::GameSFML()
         : window(sf::VideoMode(800, 800), "Game Window") {
 
     if (!heroTexture.loadFromFile("../graphic/hero.png")) {
-        std::cerr << "Failed to load hero texture!" << std::endl;
+        std::cout << "Failed to load hero texture!" << std::endl;
+        exit(420);
     }
     heroSprite.setTexture(heroTexture);
     heroSprite.setScale(80.0f / heroTexture.getSize().x, 80.0f / heroTexture.getSize().y);
 
-    if (!rocketTexture.loadFromFile("../graphic/rocket.png")) {
-        std::cerr << "Failed to load rocket texture!" << std::endl;
+    if (!rocketTexture.loadFromFile("../graphic/bomb.png")) {
+        std::cout << "Failed to load rocket texture!" << std::endl;
+        exit(421);
     }
     rocketSprite.setTexture(rocketTexture);
     rocketSprite.setScale(80.0f / rocketTexture.getSize().x, 80.0f / rocketTexture.getSize().y);
@@ -63,10 +65,17 @@ void GameSFML::Show() {
 
 
 void GameSFML::Run() {
+    gameStatus = true;
     std::thread rocketThread(&Engine::MoveRockets, this);
     rocketThread.detach();
 
+
     while (window.isOpen()) {
+        if(!gameStatus) {
+            std::cout << "Game Over! You were hit by a rocket!" << std::endl;
+            exit(0);
+        }
+
         Analysis();
         MoveInput();
 
@@ -74,5 +83,6 @@ void GameSFML::Run() {
         Show();
         window.display();
     }
+
 }
 

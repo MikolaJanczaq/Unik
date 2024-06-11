@@ -5,12 +5,12 @@
 
 class Game : public Engine {
 private:
-    Game(const Game &e);
-    Game &operator=(const Game &E);
+    Game(const Game &g);
+    Game &operator=(const Game &g);
 
 public:
     Game();
-    ~Game();
+    virtual ~Game();
 
     virtual void Run();
     virtual void Show();

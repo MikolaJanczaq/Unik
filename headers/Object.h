@@ -3,8 +3,9 @@
 
 class Object {
 private:
-    Object(const Object &e);
-    Object &operator=(const Object &E);
+    Object(const Object &o);
+    Object &operator=(const Object &o);
+
 protected:
     int location_x, location_y;
 
@@ -13,6 +14,7 @@ public:
     virtual ~Object();
 
     virtual void startingPosition();
+
     int getLocationX() const;
     int getLocationY() const;
 

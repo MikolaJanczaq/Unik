@@ -1,25 +1,11 @@
 #include "../headers/Rocket.h"
 #include <cstdlib>
 
-Rocket::Rocket() : Object(), direction(0) {
-    direction = rand() % 4;
+Rocket::Rocket() : Object() {
+    direction = rand() % 4; // 0 down 1 up 2 left 3 right
 }
 
 Rocket::~Rocket() {}
-
-Rocket::Rocket(Rocket &&other) noexcept : Object(), direction(other.direction) {
-    location_x = other.location_x;
-    location_y = other.location_y;
-}
-
-Rocket& Rocket::operator=(Rocket &&other) noexcept {
-    if (this != &other) {
-        location_x = other.location_x;
-        location_y = other.location_y;
-        direction = other.direction;
-    }
-    return *this;
-}
 
 void Rocket::startingPosition() {
     int edge = rand() % 4;
@@ -56,12 +42,16 @@ int Rocket::getDirection() const{
     return direction;
 }
 
-bool Rocket::isAtEdge(int direction) const {
-    switch (direction) {
+void Rocket::setDirection()  {
+    this->direction = rand() % 4;
+}
+
+bool Rocket::isAtEdge(int rocket_direction) const {
+    switch (rocket_direction) {
         case 0: return location_y == 0; // Góra
         case 1: return location_y == 9; // Dół
         case 2: return location_x == 0; // Lewo
         case 3: return location_x == 9; // Prawo
-        default: return false; // Nieznany kierunek
+        default: return false;
     }
 }

@@ -9,21 +9,24 @@
 class Engine {
 protected:
     int size;
-    int rockets_num;
     int **tab;
-    int **temp;
+    int rocketsNum;
+    std::vector<Rocket*> rockets;
     Hero hero;
-    std::vector<Rocket> rockets;
+    int speed;
 
     void createMap();
     void createHero();
     void createRockets();
     void replaceRocket(int index);
+    bool checkCollision();
 
+private:
     Engine(const Engine &e);
-    Engine &operator=(const Engine &E);
+    Engine &operator=(const Engine &e);
 
 public:
+    bool gameStatus;
     Engine();
     virtual ~Engine();
 

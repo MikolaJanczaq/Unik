@@ -6,11 +6,11 @@
 class Hero : public Object {
 private:
     Hero(const Hero &h);
-    Hero &operator=(const Hero &H);
+    Hero &operator=(const Hero &h);
 
 public:
     Hero();
-    ~Hero();
+    ~Hero() override;
 
     void startingPosition() override;
     void move(char input);

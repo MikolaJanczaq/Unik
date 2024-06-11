@@ -7,21 +7,19 @@ class Rocket : public Object {
 private:
     int direction;
 
+    Rocket(const Rocket &r);
+    Rocket& operator=(const Rocket &r);
+
 public:
     Rocket();
-    ~Rocket();
-
-    Rocket(const Rocket &other) = delete;
-    Rocket& operator=(const Rocket &other) = delete;
-
-    Rocket(Rocket &&other) noexcept;
-    Rocket& operator=(Rocket &&other) noexcept;
+    ~Rocket() override;
 
     int getDirection() const;
+    void setDirection() ;
 
     void startingPosition() override;
-    void move() override;
     bool isAtEdge(int direction) const;
+    void move() override;
 };
 
 #endif //UNIK_ROCKET_H

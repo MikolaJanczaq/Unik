@@ -16,7 +16,7 @@ private:
 
 public:
     GameSFML();
-    ~GameSFML();
+    ~GameSFML() override;
 
     void Run() override;
 
