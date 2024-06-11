@@ -18,6 +18,8 @@ add_executable(Unik
         headers/Game.h
         class/GameSFML.cpp
         headers/GameSFML.h
+        class/HeroControllerSFML.cpp
+        headers/HeroControllerSFML.h
 )
 
 set(SFML_STATIC_LIBRARIES TRUE)

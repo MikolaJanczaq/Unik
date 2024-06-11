@@ -2,6 +2,7 @@
 #define UNIK_GAMESFML_H
 
 #include "Game.h"
+#include "HeroControllerSFML.h"
 #include <SFML/Graphics.hpp>
 
 class GameSFML : public Game {
@@ -11,15 +12,15 @@ private:
     sf::Texture rocketTexture;
     sf::Sprite heroSprite;
     sf::Sprite rocketSprite;
+    HeroControllerSFML heroController;
+
     void Show() override;
-    void MoveInput();
 
 public:
     GameSFML(const char* fn);
     ~GameSFML() override;
 
     void Run() override;
-
 };
 
 #endif //UNIK_GAMESFML_H

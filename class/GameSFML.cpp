@@ -2,7 +2,7 @@
 #include <iostream>
 #include <thread>
 
-GameSFML::GameSFML(const char* fn): Game(fn), window(sf::VideoMode(800, 800), "Game Window") {
+GameSFML::GameSFML(const char* fn) : Game(fn), window(sf::VideoMode(800, 800), "Game Window"), heroController(hero) {
 
     if (!heroTexture.loadFromFile("../graphic/hero.png")) {
         std::cout << "Failed to load hero texture!" << std::endl;
@@ -20,32 +20,6 @@ GameSFML::GameSFML(const char* fn): Game(fn), window(sf::VideoMode(800, 800), "G
 }
 
 GameSFML::~GameSFML() {}
-
-void GameSFML::MoveInput() {
-    sf::Event event;
-    while (window.pollEvent(event)) {
-        if (event.type == sf::Event::Closed) {
-            window.close();
-        } else if (event.type == sf::Event::KeyPressed) {
-            switch (event.key.code) {
-                case sf::Keyboard::W:
-                    hero.move('w');
-                    break;
-                case sf::Keyboard::A:
-                    hero.move('a');
-                    break;
-                case sf::Keyboard::S:
-                    hero.move('s');
-                    break;
-                case sf::Keyboard::D:
-                    hero.move('d');
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-}
 
 void GameSFML::Show() {
     for (int i = 0; i < size; ++i) {
@@ -73,7 +47,15 @@ void GameSFML::Run() {
         }
 
         Analysis();
-        MoveInput();
+
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            } else {
+                heroController.handleInput(event);
+            }
+        }
 
         window.clear();
         Show();
