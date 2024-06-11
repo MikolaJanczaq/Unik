@@ -2,8 +2,7 @@
 #include <iostream>
 #include <thread>
 
-GameSFML::GameSFML()
-        : window(sf::VideoMode(800, 800), "Game Window") {
+GameSFML::GameSFML(const char* fn): Game(fn), window(sf::VideoMode(800, 800), "Game Window") {
 
     if (!heroTexture.loadFromFile("../graphic/hero.png")) {
         std::cout << "Failed to load hero texture!" << std::endl;
@@ -48,7 +47,6 @@ void GameSFML::MoveInput() {
     }
 }
 
-
 void GameSFML::Show() {
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
@@ -63,12 +61,10 @@ void GameSFML::Show() {
     }
 }
 
-
 void GameSFML::Run() {
     gameStatus = true;
     std::thread rocketThread(&Engine::MoveRockets, this);
     rocketThread.detach();
-
 
     while (window.isOpen()) {
         if(!gameStatus) {
@@ -83,6 +79,4 @@ void GameSFML::Run() {
         Show();
         window.display();
     }
-
 }
-

@@ -15,7 +15,7 @@ private:
     void MoveInput();
 
 public:
-    GameSFML();
+    GameSFML(const char* fn);
     ~GameSFML() override;
 
     void Run() override;

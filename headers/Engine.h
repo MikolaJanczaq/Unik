@@ -2,6 +2,7 @@
 #define UNIK_ENGINE_H
 
 #include <vector>
+#include <string>
 #include "Object.h"
 #include "Hero.h"
 #include "Rocket.h"
@@ -15,11 +16,14 @@ protected:
     Hero hero;
     int speed;
 
+    void readConfig(const char* fn);
+
     void createMap();
     void createHero();
     void createRockets();
     void replaceRocket(int index);
     bool checkCollision();
+
 
 private:
     Engine(const Engine &e);
@@ -27,7 +31,7 @@ private:
 
 public:
     bool gameStatus;
-    Engine();
+    Engine(const char* fn);
     virtual ~Engine();
 
     void Analysis();

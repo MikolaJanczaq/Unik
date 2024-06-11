@@ -3,12 +3,28 @@
 #include <ctime>
 #include <vector>
 #include <thread>
+#include <fstream>
 
-Engine::Engine() : size(10), rocketsNum(1), speed(10) {
+Engine::Engine(const char* fn) : size(10) {
+    readConfig(fn);
     srand(static_cast<unsigned int>(time(0)));
     createMap();
     createHero();
     createRockets();
+}
+
+void Engine::readConfig(const char* fn) {
+    std::ifstream file(fn);
+    if (!file.is_open()) {
+        exit(500);
+    }
+    int value;
+    file >> value;
+        rocketsNum = value;
+
+    file >> value;
+        speed = value;
+    file.close();
 }
 
 Engine::~Engine() {
@@ -43,11 +59,15 @@ void Engine::createRockets() {
     }
 }
 void Engine::MoveRockets() {
+    speed = (11-speed)*100;
+    if(speed<0) {
+        exit(600);
+    }
     while (true) {
         for(int i = 0; i < rockets.size(); i++) {
             rockets[i]->move();
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds ((11 - speed) * 100));
+        std::this_thread::sleep_for(std::chrono::milliseconds (speed));
     }
 }
 

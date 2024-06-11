@@ -9,7 +9,7 @@ private:
     Game &operator=(const Game &g);
 
 public:
-    Game();
+    Game(const char* fn);
     virtual ~Game();
 
     virtual void Run();
