@@ -2,7 +2,7 @@
 #include <iostream>
 #include <thread>
 
-GameSFML::GameSFML(const char* fn) : Game(fn), window(sf::VideoMode(800, 800), "Game Window"), heroController(hero) {
+GameSFML::GameSFML(const char* fn) : Game(fn), window(sf::VideoMode(800, 800), "Unik"), heroController(hero) {
 
     if (!heroTexture.loadFromFile("../graphic/hero.png")) {
         std::cout << "Failed to load hero texture!" << std::endl;
@@ -11,7 +11,7 @@ GameSFML::GameSFML(const char* fn) : Game(fn), window(sf::VideoMode(800, 800), "
     heroSprite.setTexture(heroTexture);
     heroSprite.setScale(80.0f / heroTexture.getSize().x, 80.0f / heroTexture.getSize().y);
 
-    if (!rocketTexture.loadFromFile("../graphic/bomb.png")) {
+    if (!rocketTexture.loadFromFile("../graphic/rocket.png")) {
         std::cout << "Failed to load rocket texture!" << std::endl;
         exit(421);
     }
