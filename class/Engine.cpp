@@ -47,13 +47,13 @@ void Engine::createHero() {
         hero->startingPosition();
     }
 
-    void Engine::createRockets() {
-        for (int i = 0; i < rocketsNum; ++i) {
-            Object* rocket = new Rocket();
-            do {
-                rocket->startingPosition();
-            } while (rocket->getLocationX() == hero->getLocationX() && rocket->getLocationY() == hero->getLocationY());
-            rockets.push_back(rocket);
+void Engine::createRockets() {
+    for (int i = 0; i < rocketsNum; ++i) {
+        Object* rocket = new Rocket();
+        do {
+            rocket->startingPosition();
+        } while (rocket->getLocationX() == hero->getLocationX() && rocket->getLocationY() == hero->getLocationY());
+        rockets.push_back(rocket);
     }
 }
 
