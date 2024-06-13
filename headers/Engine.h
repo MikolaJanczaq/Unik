@@ -1,14 +1,16 @@
 #ifndef UNIK_ENGINE_H
 #define UNIK_ENGINE_H
 
-#include "../headers/Object.h"
-#include "../headers/Hero.h"
-#include "../headers/Rocket.h"
-
-#include <vector>
 #include "Object.h"
+#include "Hero.h"
+#include "Rocket.h"
+#include <vector>
+
 
 class Engine {
+private:
+    Engine(const Engine &e);
+    Engine &operator=(const Engine &e);
 protected:
     int size;
     int **tab;
