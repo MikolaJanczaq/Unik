@@ -8,6 +8,7 @@ class HeroControllerSFML {
 private:
     HeroControllerSFML(const HeroControllerSFML &hc);
     HeroControllerSFML& operator=(const HeroControllerSFML &hc);
+
     Object* hero;
 
 public:

@@ -10,7 +10,7 @@ void Hero::startingPosition() {
 }
 
 void Hero::move(char input) {
-    switch (input) {
+    switch(input) {
         case 'w': if (location_y > 0) location_y--; break;
         case 's': if (location_y < 9) location_y++; break;
         case 'a': if (location_x > 0) location_x--; break;

@@ -18,7 +18,7 @@ public:
     int getLocationY() const;
 
     virtual void startingPosition();
-    virtual void move(char input) =0;
+    virtual void move(char input)=0;
 };
 
 #endif //UNIK_OBJECT_H

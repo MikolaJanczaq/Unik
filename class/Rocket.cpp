@@ -48,10 +48,10 @@ void Rocket::setDirection()  {
 
 bool Rocket::isAtEdge(int rocket_direction) const {
     switch (rocket_direction) {
-        case 0: return location_y == 0; // Góra
-        case 1: return location_y == 9; // Dół
-        case 2: return location_x == 0; // Lewo
-        case 3: return location_x == 9; // Prawo
+        case 0: return location_y == 0;
+        case 1: return location_y == 9;
+        case 2: return location_x == 0;
+        case 3: return location_x == 9;
         default: return false;
     }
 }

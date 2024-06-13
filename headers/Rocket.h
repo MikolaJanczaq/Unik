@@ -5,10 +5,10 @@
 
 class Rocket : public Object {
 private:
-    int direction;
-
     Rocket(const Rocket &r);
     Rocket& operator=(const Rocket &r);
+
+    int direction;
 
 public:
     Rocket();
@@ -16,9 +16,9 @@ public:
 
     int getDirection() const;
     void setDirection() ;
+    bool isAtEdge(int rocket_direction) const;
 
     void startingPosition() override;
-    bool isAtEdge(int rocket_direction) const;
     void move(char input) override;
 };
 

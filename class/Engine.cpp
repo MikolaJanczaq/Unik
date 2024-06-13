@@ -58,8 +58,8 @@ void Engine::createRockets() {
 }
 
 void Engine::MoveRockets() {
-    speed = (11 - speed) * 100;
-    if (speed < 0) {
+    speed=(11-speed)*100;
+    if (speed<0) {
         exit(600);
     }
     while (true) {
@@ -78,7 +78,7 @@ void Engine::replaceRocket(int index) {
 }
 
 bool Engine::checkCollision() {
-    for (int i = 0; i < rockets.size(); i++) {
+    for(int i = 0; i < rockets.size(); i++) {
         if (rockets[i]->getLocationX() == hero->getLocationX() && rockets[i]->getLocationY() == hero->getLocationY()) {
             gameStatus = false;
             return true;
