@@ -13,12 +13,12 @@ public:
     Object();
     virtual ~Object();
 
-    virtual void startingPosition();
 
     int getLocationX() const;
     int getLocationY() const;
 
-    virtual void move();
+    virtual void startingPosition();
+    virtual void move(char input) =0;
 };
 
 #endif //UNIK_OBJECT_H

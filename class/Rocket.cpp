@@ -29,7 +29,7 @@ void Rocket::startingPosition() {
     }
 }
 
-void Rocket::move() {
+void Rocket::move(char input) {
     switch (direction) {
         case 0: if (location_y > 0) location_y--; break;
         case 1: if (location_y < 9) location_y++; break;

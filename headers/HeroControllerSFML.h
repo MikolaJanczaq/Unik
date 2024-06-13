@@ -6,10 +6,12 @@
 
 class HeroControllerSFML {
 private:
-    Hero& hero;
+    HeroControllerSFML(const HeroControllerSFML &hc);
+    HeroControllerSFML& operator=(const HeroControllerSFML &hc);
+    Object* hero;
 
 public:
-    HeroControllerSFML(Hero& h);
+    HeroControllerSFML(Object* h);
     void handleInput(const sf::Event& event);
 };
 

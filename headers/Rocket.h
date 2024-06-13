@@ -18,8 +18,8 @@ public:
     void setDirection() ;
 
     void startingPosition() override;
-    bool isAtEdge(int direction) const;
-    void move() override;
+    bool isAtEdge(int rocket_direction) const;
+    void move(char input) override;
 };
 
 #endif //UNIK_ROCKET_H

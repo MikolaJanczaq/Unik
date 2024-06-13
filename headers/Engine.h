@@ -1,33 +1,28 @@
 #ifndef UNIK_ENGINE_H
 #define UNIK_ENGINE_H
 
+#include "../headers/Object.h"
+#include "../headers/Hero.h"
+#include "../headers/Rocket.h"
+
 #include <vector>
-#include <string>
 #include "Object.h"
-#include "Hero.h"
-#include "Rocket.h"
 
 class Engine {
 protected:
     int size;
     int **tab;
     int rocketsNum;
-    std::vector<Rocket*> rockets;
-    Hero hero;
+    std::vector<Object*> rockets;
+    Object* hero;
     int speed;
 
     void readConfig(const char* fn);
-
     void createMap();
     void createHero();
     void createRockets();
     void replaceRocket(int index);
     bool checkCollision();
-
-
-private:
-    Engine(const Engine &e);
-    Engine &operator=(const Engine &e);
 
 public:
     bool gameStatus;

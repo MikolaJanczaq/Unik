@@ -17,5 +17,3 @@ int Object::getLocationX() const {
 int Object::getLocationY() const {
     return location_y;
 }
-
-void Object::move() {}

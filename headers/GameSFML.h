@@ -7,6 +7,9 @@
 
 class GameSFML : public Game {
 private:
+    GameSFML(const GameSFML &gs);
+    GameSFML& operator=(const GameSFML &gs);
+
     sf::RenderWindow window;
     sf::Texture heroTexture;
     sf::Texture rocketTexture;
