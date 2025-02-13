@@ -45,3 +45,8 @@ Pierwsza liczba oznacza liczbę rakiet, a druga ich prędkość (im wyższa wart
 ## Dokumentacja
 Dokumentacja do kodu znajduje się w folderze `docs`.
 
+## Demo
+
+![unik_demo](https://github.com/user-attachments/assets/880fdc3e-4028-4cdf-a060-ababc79901b5)
+
+
